@@ -5,8 +5,10 @@ import './list.css';
 const List = ({data}) => {
 
     const elements = data.map(item => {
+        const{id, ...itemProps} = item;
+
         return (
-            <ListItem {...item}/>
+            <ListItem key={id} {...itemProps}/>
         )
     })
 
