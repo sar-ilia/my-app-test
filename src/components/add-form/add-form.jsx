@@ -16,6 +16,15 @@ class AddForm extends Component {
             [e.target.name] : e.target.value
         }) 
     }
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.onAdd(this.state.name, this.state.price);
+        this.setState({
+            name: '',
+            price: ''
+        })
+    }
     
     render() {
         const {name, price} = this.state;
@@ -24,7 +33,8 @@ class AddForm extends Component {
             <div className="app-add-form">
                 <h3>Add a New Item</h3>
                 <form
-                    className="add-form d-flex">
+                    className="add-form d-flex"
+                    onSubmit={this.onSubmit}>
                     <input type="text"
                         className="form-control new-post-label"
                         placeholder="What's it called?"

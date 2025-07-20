@@ -2,13 +2,17 @@ import ListItem from "../list-item/ilst-item";
 
 import './list.css';
 
-const List = ({data}) => {
+const List = ({data, onDelete, onToggleProp}) => {
 
     const elements = data.map(item => {
         const{id, ...itemProps} = item;
 
         return (
-            <ListItem key={id} {...itemProps}/>
+            <ListItem
+            key={id}
+            {...itemProps}
+            onDelete={() => onDelete(id)}
+            onToggleProp={(e) => onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}/>
         )
     })
 
