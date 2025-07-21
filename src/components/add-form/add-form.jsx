@@ -19,7 +19,9 @@ class AddForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onAdd(this.state.name, this.state.price);
+        const {name, price} = this.state;
+
+        this.props.onAdd(name, price);
         this.setState({
             name: '',
             price: ''
